@@ -1,0 +1,61 @@
+<!-- Bootstrap links -->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <title>Bootstrap Example</title>-->
+<!--  <meta charset="utf-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--</head>-->
+
+
+<!--<h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>-->
+
+<!--<div *ngIf="!(authService.user | async)">-->
+<!--    <div class="alert alert-danger alert-dismissible fade in">-->
+<!--        <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+<!--        <strong>Oops!</strong> Wrong username or password, please try again.-->
+<!--    </div>-->
+<!--</div>-->
+
+<div *ngIf="!(authService.user | async)">
+  <input type="text" [(ngModel)]="email" placeholder="email">
+  <input type="password" [(ngModel)]="password" placeholder="password">
+
+  <button (click)="signup()" [disabled]="!email || !password">
+    Sign Up
+  </button>
+
+  <button (click)="login()" [disabled]="!email || !password" type="button" data-toggle="modal" data-target="#alertModal">
+    Login
+  </button>
+  
+    <!-- Modal -->
+    <div id="alertModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-sm">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Oops!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Incorrect username or password.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+      
+  
+  
+</div>
+
+<button (click)="logout()" *ngIf="authService.user | async">
+  Logout
+</button>

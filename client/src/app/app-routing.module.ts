@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 
-const routes: Routes = [];
+import { LoginComponent } from './login/login.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
-@NgModule({
+
+export const AppRoutes: Routes = [
+    { path: 'login', component: LoginComponent, pathMatch: 'full' },
+    { path: 'about', component: AboutUsComponent}
+
+  
+];
+
+export const ROUTING: ModuleWithProviders = RouterModule.forRoot(AppRoutes);
+
+/*@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { }*/
