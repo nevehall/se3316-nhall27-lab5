@@ -1,3 +1,80 @@
-<p>
-  catalogue works!
-</p>
+ <!--Bootstrap links -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+ <!--Bootstrap links -->
+
+<body>
+
+<div class="container">
+  <!--<h2>List Group With Linked Items</h2>-->
+  <div class="list-group">
+            <a class="list-group-item">First item</a>
+            <a class="list-group-item">Second item</a>
+            <a class="list-group-item">Third item</a>
+  </div>
+  
+<!--<div class="btn-group" mdbDropdown>-->
+<!--  <button mdbDropdownToggle type="button" mdbBtn color="primary" class="dropdown-toggle waves-light"-->
+<!--    mdbWavesEffect>-->
+<!--    Basic dropdown-->
+<!--  </button>-->
+
+<!--  <div class="dropdown-menu dropdown-primary">-->
+<!--    <a class="dropdown-item" href="#">Action</a>-->
+<!--    <a class="dropdown-item" href="#">Another action</a>-->
+<!--    <a class="dropdown-item" href="#">Something else here</a>-->
+<!--    <div class="divider dropdown-divider"></div>-->
+<!--    <a class="dropdown-item" href="#">Separated link</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<button mat-button [matMenuTriggerFor]="menu">Menu</button>-->
+<!--<mat-menu #menu="matMenu">-->
+<!--  <button mat-menu-item>Item 1</button>-->
+<!--  <button mat-menu-item>Item 2</button>-->
+<!--</mat-menu>-->
+  
+  <!--<div class="dropdown">-->
+  <!--  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example-->
+  <!--  <span class="caret"></span></button>-->
+  <!--  <ul class="dropdown-menu">-->
+  <!--    <li><a href="">HTML</a></li>-->
+  <!--    <li><a href="#">CSS</a></li>-->
+  <!--    <li><a href="#">JavaScript</a></li>-->
+  <!--  </ul>-->
+  <!--</div>-->
+  
+  <div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item">Action - 1</button>
+        <button class="dropdown-item">Another Action</button>
+        <button class="dropdown-item">Something else is here</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col text-right">
+    <div ngbDropdown placement="top-right" class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Toggle dropup</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+        <button class="dropdown-item">Action - 1</button>
+        <button class="dropdown-item">Another Action</button>
+        <button class="dropdown-item">Something else is here</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+</div>
+
+</body>
+
