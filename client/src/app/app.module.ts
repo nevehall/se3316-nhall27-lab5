@@ -17,7 +17,6 @@ import { RootComponent } from './root/root.component';
 import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
-import { LogoutComponent } from './logout/logout.component';
 import { BestSellersComponent } from './best-sellers/best-sellers.component';
 import { MaterialModule } from './material.module'
 
@@ -29,7 +28,6 @@ import { MaterialModule } from './material.module'
     LoginComponent,
     AboutUsComponent,
     CatalogueComponent,
-    LogoutComponent,
     BestSellersComponent,
   ],
   imports: [

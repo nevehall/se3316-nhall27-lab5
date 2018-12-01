@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { LoginService } from './login.service';
+import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [ LoginService ]
 })
 export class LoginComponent implements OnInit {
+  
+  public user : User;
+  
   email: string;
   password: string;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private loginService: LoginService, private router: Router) {
+    this.user = new User();
+  }
 
   signup() {
     this.authService.signup(this.email, this.password);
@@ -25,6 +34,25 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+  
+  //dont know if i need this???????????????
+  validateLogin() {
+  	if(this.user.username && this.user.password) {
+  		this.loginService.validateLogin(this.user).subscribe(result => {
+        console.log('result is ', result);
+        if(result['status'] === 'success') {
+          this.router.navigate(['/home']);
+        } else {
+          alert('Wrong username password');
+        }
+        
+      }, error => {
+        console.log('error is ', error);
+      });
+  	} else {
+  		alert('enter user name and password');
+  	}
   }
   
   ngOnInit() {
