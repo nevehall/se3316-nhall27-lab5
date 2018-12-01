@@ -55,6 +55,7 @@
   
   
 </div>
+<h1 *ngIf="authService.user | async">Welcome!</h1>
 
 <button (click)="logout()" *ngIf="authService.user | async">
   Logout

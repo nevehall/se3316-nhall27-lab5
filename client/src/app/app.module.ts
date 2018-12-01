@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ROUTING } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //import { AppRoutingModule } from './app-routing.module';
 //import { AppComponent } from './app.component';
@@ -17,7 +18,9 @@ import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { LogoutComponent } from './logout/logout.component';
-//import { MaterialsComponent } from './materials/materials.component';
+import { BestSellersComponent } from './best-sellers/best-sellers.component';
+import { MaterialModule } from './material.module'
+
 
 
 @NgModule({
@@ -26,8 +29,8 @@ import { LogoutComponent } from './logout/logout.component';
     LoginComponent,
     AboutUsComponent,
     CatalogueComponent,
-    LogoutComponent
-    //MaterialsComponent
+    LogoutComponent,
+    BestSellersComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgbModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [RootComponent]
