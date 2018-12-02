@@ -29,20 +29,21 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.email, this.password);
-    this.email = this.password = '';    
+    this.email = this.password = '';   
+    this.router.navigate(['/home']);
   }
 
   logout() {
     this.authService.logout();
   }
   
-  //dont know if i need this???????????????
   validateLogin() {
-  	if(this.user.username && this.user.password) {
+  	if(this.user.email && this.user.password) {
   		this.loginService.validateLogin(this.user).subscribe(result => {
         console.log('result is ', result);
         if(result['status'] === 'success') {
-          this.router.navigate(['/home']);
+          //this.router.navigate(['/home']);
+          console.log('Woo the login/validating user worked!');
         } else {
           alert('Wrong username password');
         }

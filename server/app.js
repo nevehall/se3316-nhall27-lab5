@@ -13,7 +13,7 @@ app.post('/api/user/login', (req, res) => {
 	mongoose.connect(url, function(err){
 		if(err) throw err;
 		User.find({
-			email : req.body.username, password : req.body.password
+			email : req.body.email, password : req.body.password
 		}, function(err, user){
 			if(err) throw err;
 			if(user.length === 1){	
@@ -31,7 +31,20 @@ app.post('/api/user/login', (req, res) => {
 		})
 	});
 }) 
- 
+
+app.post('/api/post/getAllProduct', (req, res) => {
+    mongoose.connect(url, function(err){
+        if(err) throw err;
+        console.log('connection established successfully');
+        Product.find({},[],{ sort: { _id: 1 } },(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+    });
+})
  
  
  

@@ -19,44 +19,26 @@
 <!--    </div>-->
 <!--</div>-->
 
-<div *ngIf="!(authService.user | async)">
-  <input type="text" [(ngModel)]="email" placeholder="Email Address">
-  <input type="password" [(ngModel)]="password" placeholder="Password">
-
-  <button (click)="signup()" [disabled]="!email || !password">
-    Sign Up
-  </button>
-
-  <button (click)="login()" [disabled]="!email || !password" type="button" data-toggle="modal" data-target="#alertModal">
-    Login
+<div class = container>
+  <div *ngIf="!(authService.user | async)">
+    <input type="text" [(ngModel)]="email" placeholder="Email Address">
+    <input type="password" [(ngModel)]="password" placeholder="Password">
+  
+    <button (click)="signup()" [disabled]="!email || !password">
+      Sign Up
+    </button>
+  
+    <button (click)="login()" [disabled]="!email || !password" type="button">
+      Login
+    </button>
+    
+  </div>
+  
+  
+  <button (click)="logout()" *ngIf="authService.user | async">
+    Logout
   </button>
   
-    <!-- Modal -->
-    <div id="alertModal" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-sm">
-    
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Oops!</h4>
-          </div>
-          <div class="modal-body">
-            <p>Incorrect username or password.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-    
-      </div>
-    </div>
-      
-  
+  <a *ngIf="authService.user | async" class="nav-button" routerLink="/home" ><button>Home</button></a>
   
 </div>
-<h1 *ngIf="authService.user | async">Welcome!</h1>
-
-<button (click)="logout()" *ngIf="authService.user | async">
-  Logout
-</button>
