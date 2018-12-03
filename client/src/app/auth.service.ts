@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
   user: Observable<firebase.User>;
 
-  constructor(private firebaseAuth: AngularFireAuth, private http: HttpClient) {
+  constructor(private firebaseAuth: AngularFireAuth, private http: HttpClient, private router: Router) {
     this.user = firebaseAuth.authState;
   }
   
@@ -40,9 +40,12 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
+        return true;
         console.log('Nice, it worked!');
+        this.router.navigate(['/home']);
       })
       .catch(err => {
+        return false;
         console.log('Something went wrong:',err.message);
       });
   }

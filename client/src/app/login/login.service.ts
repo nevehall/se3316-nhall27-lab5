@@ -11,8 +11,7 @@ export class LoginService {
 	
 	validateLogin(user: User){
 		return this.http.post('/api/user/login',{
-			email : user.email,
-			password : user.password
+			email : user.email
 		})
 	}
 

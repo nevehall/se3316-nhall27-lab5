@@ -16,16 +16,16 @@
     <input name="name" type="text" [(ngModel)]="cart.name" id="nameInput" placeholder="Enter Product Name">
 </div>
 <div>
-    <label>Quantity: </label>
-    <textarea name="quantity" [(ngModel)]="cart.quantity" id="quantityInput" placeholder="Quantity"></textarea>
+    <label>Price: </label>
+    <textarea name="price" [(ngModel)]="cart.price" id="priceInput" placeholder="Price"></textarea>
 </div>
 <div>
     <label>Tax: </label>
     <textarea name="tax" [(ngModel)]="cart.tax" id="taxInput" placeholder="Tax"></textarea>
 </div>
 <div>
-    <label>Price: </label>
-    <textarea name="tax" [(ngModel)]="cart.price" id="priceInput" placeholder="Price"></textarea>
+    <label>Quantity: </label>
+    <textarea name="quantity" [(ngModel)]="cart.quantity" id="quantityInput" placeholder="Quantity"></textarea>
 </div>
 
 <button (click)="addProduct()" type="button" class="btn btn-primary">Add</button>

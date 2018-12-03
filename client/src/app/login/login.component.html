@@ -28,7 +28,7 @@
       Sign Up
     </button>
   
-    <button (click)="login()" [disabled]="!email || !password" type="button">
+    <button (click)="login(email);" [disabled]="!email || !password" type="button">
       Login
     </button>
     

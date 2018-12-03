@@ -27,18 +27,23 @@ export class LoginComponent implements OnInit {
     this.email = this.password = '';
   }
 
-  login() {
-    this.authService.login(this.email, this.password);
-    this.email = this.password = '';   
-    this.router.navigate(['/home']);
+  login(email) {
+    var check=this.authService.login(this.email, this.password);
+    if (check==true){
+      this.validateLogin(email);
+    }
+    else{
+      this.email = this.password = '';
+    }
   }
 
   logout() {
     this.authService.logout();
   }
   
-  validateLogin() {
-  	if(this.user.email && this.user.password) {
+  validateLogin(email) {
+    console.log(email);
+  	if(email) {
   		this.loginService.validateLogin(this.user).subscribe(result => {
         console.log('result is ', result);
         if(result['status'] === 'success') {

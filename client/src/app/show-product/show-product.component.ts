@@ -16,6 +16,8 @@ export class ShowProductComponent implements OnInit {
 
   constructor(private showProductService: ShowProductService, private commonService: CommonService) {}
 
+  //on the initialization of the website (when logging in), all the items 
+  //from the catalogue are displayed to authenticated users
   ngOnInit() {
     this.getAllProduct();
     

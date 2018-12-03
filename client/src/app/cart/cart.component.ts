@@ -16,6 +16,8 @@ export class CartComponent implements OnInit{
   
   constructor(private cartService: CartService, private commonService: CommonService) { }
 
+  //on the initialization of the website (when logging in), all the items 
+  //already exsiting in the cart will appear
   ngOnInit() {
     this.getAllCart();
     

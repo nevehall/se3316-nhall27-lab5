@@ -20,7 +20,7 @@ app.post('/api/user/login', (req, res) => {
 			if(err) throw err;
 			if(user.length === 1){	
 				return res.status(200).json({
-					status: 'success',
+					status: 'mlab user works',
 					data: user
 				})
 			} else {
