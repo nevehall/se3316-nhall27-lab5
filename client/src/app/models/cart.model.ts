@@ -1,4 +1,4 @@
-export class Product {
+export class Cart {
 	constructor(){
 		this.name = '';
 		this.price = '';

@@ -19,6 +19,11 @@
         <h1>Products</h1>
       
         <app-show-product></app-show-product>
+        
+        <h1>Cart</h1>
+        <app-add-product (postAdded)="handleProductAdded()"></app-add-product>
+        <app-cart></app-cart>
+        <!--<app-cart (postAdded)="handleProductAdded()"></app-cart>-->
     </main>
 
 </div>

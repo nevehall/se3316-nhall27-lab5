@@ -20,7 +20,11 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { BestSellersComponent } from './best-sellers/best-sellers.component';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
-import { ShowProductComponent } from './show-product/show-product.component'
+import { ShowProductComponent } from './show-product/show-product.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { CartComponent } from './cart/cart.component';
+import { CommonService } from './service/common.service';
+import { ShowCartComponent } from './show-cart/show-cart.component';
 
 
 
@@ -32,7 +36,10 @@ import { ShowProductComponent } from './show-product/show-product.component'
     CatalogueComponent,
     BestSellersComponent,
     HomeComponent,
-    ShowProductComponent
+    ShowProductComponent,
+    AddProductComponent,
+    CartComponent,
+    ShowCartComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,7 @@ import { ShowProductComponent } from './show-product/show-product.component'
     AngularFireAuthModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AuthService, CommonService],
   bootstrap: [RootComponent]
 })
 export class AppModule { }

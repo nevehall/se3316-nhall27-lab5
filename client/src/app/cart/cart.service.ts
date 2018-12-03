@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../models/product.model';
 import { Cart } from '../models/cart.model';
  
 @Injectable()
-export class ShowProductService {
+export class CartService {
  
-    constructor(private http: HttpClient){
- 
-    }
+    constructor(private http: HttpClient){}
     
-    getAllProduct(){
-    return this.http.post('/api/post/getAllProduct',{})
+    getAllCart(){
+    return this.http.post('/api/post/getAllCart',{})
     }
     
     addProduct(cart: Cart){
-		return this.http.post('/api/post/createProduct',{
+	    return this.http.post('/api/post/createProduct',{
 		    //id: product._id,
 			name : cart.name,
 			quantity : cart.quantity,
@@ -24,5 +21,7 @@ export class ShowProductService {
 		})
 	}
     
+    
+    
+ 
 }
-
