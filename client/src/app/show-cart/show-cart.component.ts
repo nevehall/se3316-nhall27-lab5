@@ -12,6 +12,7 @@ import { CommonService } from '../service/common.service';
 export class ShowCartComponent implements OnInit {
 
   public carts : any [];
+  public product_to_delete;
   
   constructor(private showCartService: ShowCartService, private commonService: CommonService) { }
 
@@ -23,7 +24,22 @@ export class ShowCartComponent implements OnInit {
     });
   }
   
-  getAllCart(){
+  editCart(cart: Cart){
+    this.commonService.setProductToEdit(cart);
+    console.log('product is ',cart);
+  }
+  
+  setDelete(cart: Cart){
+    this.product_to_delete = cart;
+  }
+  
+  deleteProduct(){
+    this.showCartService.deleteProduct(this.product_to_delete._id).subscribe(res => {
+      this.getAllCart();
+    })
+  }
+  
+   getAllCart(){
     this.showCartService.getAllCart().subscribe(result =>{
       console.log('result is ', result);
       this.carts = result['data'];

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddProductService } from './add-product.service';
 import { Cart } from '../models/cart.model';
 import { Router } from '@angular/router';
@@ -10,7 +10,8 @@ import { CommonService } from '../service/common.service';
   styleUrls: ['./add-product.component.css'],
   providers: [AddProductService]
 })
-export class AddProductComponent{
+  
+export class AddProductComponent implements OnInit{
   
   public cart : Cart;
 
@@ -18,9 +19,15 @@ export class AddProductComponent{
   	this.cart = new Cart();
   }
   
+  ngOnInit(){
+    this.commonService.productEdit_Observable.subscribe(res => {
+      this.cart = this.commonService.product_to_be_edited;
+      console.log('product is ', this.cart._id);
+    });
+  }
   
   addProduct() {
-  	if(this.cart.name && this.cart.quantity && this.cart.tax && this.cart.price){
+  	if(encodeHTML(this.cart.name) && encodeHTML(this.cart.quantity)){
   	//if(this.product){
   		this.addProductService.addProduct(this.cart).subscribe(res =>{
   		    console.log('response is', res)
@@ -32,3 +39,8 @@ export class AddProductComponent{
   }
 
 }
+
+//SANITIZATION
+function encodeHTML(e){
+    return e.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}; 

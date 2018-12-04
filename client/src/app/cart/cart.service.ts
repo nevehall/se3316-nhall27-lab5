@@ -15,9 +15,7 @@ export class CartService {
 	    return this.http.post('/api/post/createProduct',{
 		    //id: product._id,
 			name : cart.name,
-			quantity : cart.quantity,
-			tax: cart.tax,
-			price: cart.price
+			quantity : cart.quantity
 		})
 	}
     

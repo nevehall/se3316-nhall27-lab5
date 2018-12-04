@@ -21,5 +21,9 @@ export class ShowCartService {
 // 			description: cart.description
 // 		})
 // 	}
+
+    deleteProduct(id){
+    return this.http.post('/api/post/deleteProduct',{id : id})
+}
     
 }

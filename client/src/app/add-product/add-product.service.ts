@@ -11,10 +11,16 @@ export class AddProductService {
 		return this.http.post('/api/post/createProduct',{
 		    //id: product._id,
 			name : cart.name,
-			quantity : cart.quantity,
-			tax: cart.tax,
-			price: cart.price
+			quantity : cart.quantity
 		})
 	}
+	
+	updateProduct(cart: Cart){
+    return this.http.post('/api/post/updateProduct',{
+        id: cart._id,
+        name : cart.name,
+        quantity: cart.quantity
+    })
+}
 
 }

@@ -7,10 +7,15 @@ const User = require('./model/user');
 const Product = require('./model/product');
 const Cart = require('./model/cart');
 
+//SANITIZATION
+function encodeHTML(e){
+    return e.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : false}))
  
-
+//Validate the user login in the mlab database
 app.post('/api/user/login', (req, res) => {
 	mongoose.connect(url, function(err){
 		if(err) throw err;
@@ -33,6 +38,7 @@ app.post('/api/user/login', (req, res) => {
 		})
 	});
 }) 
+
 
 //Get all products from the PRODUCT collection
 app.post('/api/post/getAllProduct', (req, res) => {
@@ -83,6 +89,43 @@ app.post('/api/post/getAllCart', (req, res) => {
 			})
 		})
     });
+})
+
+//Update the products in the cart
+app.post('/api/post/updateProduct', (req, res) => {
+	mongoose.connect(url, function(err){
+		if(err) throw err;
+		Cart.update(
+			{_id: req.body.id },
+			{	name : req.body.name, 
+				quantity: req.body.quantity,
+				tax: req.body.tax,
+				price: req.body.price
+			},
+			(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+	});
+})
+
+//Delete the product in the cart
+app.post('/api/post/deleteProduct', (req, res) => {
+	console.log('delete product is called');
+	mongoose.connect(url, function(err){
+		if(err) throw err;
+		Cart.findByIdAndRemove(req.body.id,
+			(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+	});
 })
 
 

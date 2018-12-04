@@ -31,10 +31,34 @@
                 <li> <h4 class="mb-1"><strong>{{cart.name}}</strong></h4> </li>
             </div>
             <p class="mb-0">Price: {{cart.price}}</p>
-            <p class="mb-0">Tax %: {{cart.tax}}</p>
             <p class="mb-0">Quantity: {{cart.quantity}}</p>
-            <p class="mb-0">Price: {{cart.price}}</p>
             <!--<button (click)="addProduct(product.id)" type="button" class="btn btn-primary"><strong>Add to Cart</strong></button>-->
             <!--<button  id(click)="addProduct(product.price, product.tax, product.quantity, product.description, product.price)"><strong>Add to Cart</strong></button>-->
+            <div>
+                <button #editProduct title="Edit" (click)="editCart(cart)" aria-hidden="true">Edit</button>
+                <button (click)="deleteProduct(cart)" title="Delete" aria-hidden="true">Delete</button>
+            </div>
         </ul>
 </div>
+
+
+<!--*************DELETE MODAL CHECK***************-->
+<!--<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        Are you sure ?-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
+<!--        <button type="button" class="btn btn-primary">Delete</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

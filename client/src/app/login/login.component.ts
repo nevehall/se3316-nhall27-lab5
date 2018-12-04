@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
 
   login(email) {
     var check=this.authService.login(this.email, this.password);
-    if (check==true){
-      this.validateLogin(email);
-    }
-    else{
-      this.email = this.password = '';
-    }
+    // if (check==true){
+    //   this.validateLogin(email);
+    // }
+    // else{
+    //   this.email = this.password = '';
+    // }
   }
 
   logout() {

@@ -11,17 +11,10 @@
     
 </head>
 
+<!--**************THIS IS THE ADD/EDIT******************-->
 <div>
     <label>Name: </label>
     <input name="name" type="text" [(ngModel)]="cart.name" id="nameInput" placeholder="Enter Product Name">
-</div>
-<div>
-    <label>Price: </label>
-    <textarea name="price" [(ngModel)]="cart.price" id="priceInput" placeholder="Price"></textarea>
-</div>
-<div>
-    <label>Tax: </label>
-    <textarea name="tax" [(ngModel)]="cart.tax" id="taxInput" placeholder="Tax"></textarea>
 </div>
 <div>
     <label>Quantity: </label>
@@ -29,3 +22,9 @@
 </div>
 
 <button (click)="addProduct()" type="button" class="btn btn-primary">Add</button>
+
+<div>In order to edit an item, click on the edit button beside that item and<br/>
+change the values in the text boxes above. DO NOT click Add again if you simply<br/>
+wish to edit.</div>
+
+
