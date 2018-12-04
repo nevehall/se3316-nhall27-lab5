@@ -23,7 +23,7 @@ export class ShowCartService {
 // 	}
 
     deleteProduct(id){
-    return this.http.post('/api/post/deleteProduct',{id : id})
-}
+    return this.http.post('/api/delete/'+id+'deleteProduct',id)
+    }
     
 }

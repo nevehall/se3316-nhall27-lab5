@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
  
 // create a schema
 const userSchema = new Schema({
-  email: { type: String, required: true, unique: true }
+  email: { type: String, required: true, unique: true },
+  manager: { type: Boolean, required: false }
   
 }, { collection : 'user' });
  

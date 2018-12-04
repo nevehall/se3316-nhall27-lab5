@@ -22,15 +22,17 @@ export class LoginComponent implements OnInit {
     this.user = new User();
   }
 
-  signup() {
+  signup(email2) {
+    console.log(email2);
     this.authService.signup(this.email, this.password);
+    this.validateLogin(email2);
     this.email = this.password = '';
   }
 
-  login(email) {
-    var check=this.authService.login(this.email, this.password);
+  login(email2) {
+    // var check=this.authService.login(this.email, this.password);
     // if (check==true){
-    //   this.validateLogin(email);
+    //   this.validateLogin(email2);
     // }
     // else{
     //   this.email = this.password = '';
@@ -41,24 +43,33 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
   }
   
-  validateLogin(email) {
-    console.log(email);
-  	if(email) {
-  		this.loginService.validateLogin(this.user).subscribe(result => {
-        console.log('result is ', result);
-        if(result['status'] === 'success') {
-          //this.router.navigate(['/home']);
-          console.log('Woo the login/validating user worked!');
-        } else {
-          alert('Wrong username password');
-        }
+  validateLogin(email2) {
+    console.log(email2);
+    
+    var data={
+      email: email2,
+      manager: false
+    }
+    
+    this.loginService.validateLogin(data).subscribe(result=>{
+      console.log("NOTYOLOSWAG");
+    });
+  // 	if(email) {
+  // 		this.loginService.validateLogin(this.user).subscribe(result => {
+  //       console.log('result is ', result);
+  //       if(result['status'] === 'success') {
+  //         //this.router.navigate(['/home']);
+  //         console.log('Woo the login/validating user worked!');
+  //       } else {
+  //         alert('Wrong username password');
+  //       }
         
-      }, error => {
-        console.log('error is ', error);
-      });
-  	} else {
-  		alert('enter user name and password');
-  	}
+  //     }, error => {
+  //       console.log('error is ', error);
+  //     });
+  // 	} else {
+  // 		alert('enter user name and password');
+  // 	}
   }
   
   ngOnInit() {

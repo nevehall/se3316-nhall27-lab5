@@ -36,7 +36,7 @@
             <!--<button  id(click)="addProduct(product.price, product.tax, product.quantity, product.description, product.price)"><strong>Add to Cart</strong></button>-->
             <div>
                 <button #editProduct title="Edit" (click)="editCart(cart)" aria-hidden="true">Edit</button>
-                <button (click)="deleteProduct(cart)" title="Delete" aria-hidden="true">Delete</button>
+                <button (click)="deleteProduct($event)" id={{cart._id}} title="Delete" aria-hidden="true">Delete</button>
             </div>
         </ul>
 </div>

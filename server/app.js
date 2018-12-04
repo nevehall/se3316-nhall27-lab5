@@ -16,27 +16,46 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : false}))
  
 //Validate the user login in the mlab database
+//Add the signed up user to the mlab database
 app.post('/api/user/login', (req, res) => {
+	
 	mongoose.connect(url, function(err){
-		if(err) throw err;
-		User.find({
-			email : req.body.email, password : req.body.password
-		}, function(err, user){
+		if(err) throw err
+		console.log('user product connection established ');
+		const user = new User({
+			email: req.body.email,
+			manager: req.body.manager
+		})
+		user.save((err, doc) => {
 			if(err) throw err;
-			if(user.length === 1){	
-				return res.status(200).json({
-					status: 'mlab user works',
-					data: user
-				})
-			} else {
-				return res.status(200).json({
-					status: 'fail',
-					message: 'Login Failed'
-				})
-			}
-			
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
 		})
 	});
+	
+	// mongoose.connect(url, function(err){
+	// 	if(err) throw err;
+	// 	User.find({
+	// 		email : req.body.email, 
+	// 		manager : req.body.manager
+	// 	}, function(err, user){
+	// 		if(err) throw err;
+	// 		if(user.length === 1){	
+	// 			return res.status(200).json({
+	// 				status: 'mlab user works',
+	// 				data: user
+	// 			})
+	// 		} else {
+	// 			return res.status(200).json({
+	// 				status: 'fail',
+	// 				message: 'Login Failed'
+	// 			})
+	// 		}
+			
+	// 	})
+	// });
 }) 
 
 
@@ -113,7 +132,7 @@ app.post('/api/post/updateProduct', (req, res) => {
 })
 
 //Delete the product in the cart
-app.post('/api/post/deleteProduct', (req, res) => {
+app.post('/api/delete/:id/deleteProduct', (req, res) => {
 	console.log('delete product is called');
 	mongoose.connect(url, function(err){
 		if(err) throw err;
@@ -126,6 +145,21 @@ app.post('/api/post/deleteProduct', (req, res) => {
 			})
 		})
 	});
+})
+
+//Get all user from the USER collection -- for manager
+app.post('/api/post/getAllUser', (req, res) => {
+    mongoose.connect(url, function(err){
+        if(err) throw err;
+        console.log('manager connection established successfully');
+        User.find({},[],{ sort: { _id: 1 } },(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+    });
 })
 
 

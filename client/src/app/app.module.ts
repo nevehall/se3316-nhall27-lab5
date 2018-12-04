@@ -25,6 +25,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { CartComponent } from './cart/cart.component';
 import { CommonService } from './service/common.service';
 import { ShowCartComponent } from './show-cart/show-cart.component';
+import { ManagerComponent } from './manager/manager.component';
 
 
 
@@ -39,7 +40,8 @@ import { ShowCartComponent } from './show-cart/show-cart.component';
     ShowProductComponent,
     AddProductComponent,
     CartComponent,
-    ShowCartComponent
+    ShowCartComponent,
+    ManagerComponent
   ],
   imports: [
     BrowserModule,

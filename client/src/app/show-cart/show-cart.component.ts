@@ -24,6 +24,14 @@ export class ShowCartComponent implements OnInit {
     });
   }
   
+  getID(event)// will return the id of a object 
+  {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id.value;
+    return idAttr;
+  }
+  
+  
   editCart(cart: Cart){
     this.commonService.setProductToEdit(cart);
     console.log('product is ',cart);
@@ -33,10 +41,13 @@ export class ShowCartComponent implements OnInit {
     this.product_to_delete = cart;
   }
   
-  deleteProduct(){
-    this.showCartService.deleteProduct(this.product_to_delete._id).subscribe(res => {
-      this.getAllCart();
-    })
+  deleteProduct(event){
+    
+    var elementId = this.getID(event);
+    console.log(elementId);
+    this.showCartService.deleteProduct(elementId).subscribe(res => {
+      this.getAllCart;
+    });
   }
   
    getAllCart(){

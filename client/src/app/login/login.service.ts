@@ -9,10 +9,10 @@ export class LoginService {
 
 	}
 	
-	validateLogin(user: User){
-		return this.http.post('/api/user/login',{
-			email : user.email
-		})
+	validateLogin(user){
+		console.log(user);
+		console.log("YOLOSWAG");
+		return this.http.post('/api/user/login',user)
 	}
 
 }
