@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BestSellersComponent } from './best-sellers/best-sellers.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { ManagerComponent } from './manager/manager.component';
+
 
 
 export const AppRoutes: Routes = [
@@ -14,7 +16,8 @@ export const AppRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutUsComponent},
     { path: 'bestSellers', component: BestSellersComponent},
-    { path: 'catalogue', component: CatalogueComponent}
+    { path: 'catalogue', component: CatalogueComponent},
+    { path: 'manager', component: ManagerComponent},
   
 ];
 

@@ -14,13 +14,18 @@ export class CommonService {
 	public product_to_be_added;
 	
 	//define an observable that keeps track of when the edit button is clicked
-	public productEdit_Observable = new Subject
+	public productEdit_Observable = new Subject();
+	
+	//define an observable that keeps track of when the edit button is clicked
+	public productUpdate_Observable = new Subject();
 	
 	//defining another variable to keep track of the product that needs to be edited
 	public product_to_be_edited;
+	public product_to_be_edited2;
 
 	constructor(){
 		this.product_to_be_edited = new Cart();
+		this.product_to_be_edited2 = new Product();
 		this.product_to_be_added = new Cart(); //or Product()????
 		
 	}
@@ -36,6 +41,16 @@ export class CommonService {
     this.notifyProductEdit();
 	}
 	
+	//trigger the observable to notify the product edit
+	notifyProductEdit2(){
+		this.productUpdate_Observable.next();
+	}
+	
+	//setting the product that needs to be edit in MANAGER
+	setProductToEdit2(product: Product){
+    this.product_to_be_edited2 = product;
+    this.notifyProductEdit2();
+	}
 	
 	//trigger the observable to notify the product to add
 	notifyProductAddition(){
@@ -46,8 +61,7 @@ export class CommonService {
 	setProductToAdd(product: Product){
     this.product_to_be_added = product;
     this.notifyProductAddition();
-}
+	}
 	
 	
-
 }

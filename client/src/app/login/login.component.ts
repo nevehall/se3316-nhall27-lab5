@@ -30,13 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(email2) {
-    // var check=this.authService.login(this.email, this.password);
-    // if (check==true){
-    //   this.validateLogin(email2);
-    // }
-    // else{
-    //   this.email = this.password = '';
-    // }
+    var check=this.authService.login(this.email, this.password);
   }
 
   logout() {

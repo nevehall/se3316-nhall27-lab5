@@ -131,8 +131,52 @@ app.post('/api/post/updateProduct', (req, res) => {
 	});
 })
 
+//*****************MANAGER UPDATES PRODUCTS***********************
+//update price
+app.put('/api/put/updatePrice/:id', function(req, res) {
+	console.log('price update working' + req.body.price);
+		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+			if(err)
+				res.send(err);
+			console.log(req.body);	
+			//console.log(err);
+		});
+})
+
+//update tax 
+app.put('/api/put/updateTax/:id', function(req, res) {
+	console.log('tax update working' + req.body.tax);
+		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+			if(err)
+				res.send(err);
+			console.log(req.body);	
+		});
+})
+
+//update quantity
+app.put('/api/put/updateQuantity/:id', function(req, res) {
+	console.log('tax update working' + req.body.quantity);
+		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+			if(err)
+				res.send(err);
+			console.log(req.body);	
+		});
+})
+
+//update description
+app.put('/api/put/updateDescript/:id', function(req, res) {
+	console.log('tax update working' + req.body.descript);
+		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+			if(err)
+				res.send(err);
+			console.log(req.body);	
+		});
+})
+
+//*******************************************************************
+
 //Delete the product in the cart
-app.post('/api/delete/:id/deleteProduct', (req, res) => {
+app.delete('/api/delete/:id/deleteProduct', (req, res) => {
 	console.log('delete product is called');
 	mongoose.connect(url, function(err){
 		if(err) throw err;
@@ -162,24 +206,26 @@ app.post('/api/post/getAllUser', (req, res) => {
     });
 })
 
+//Add a comment
+app.post('/api/post/createReview', (req, res) => {
+	mongoose.connect(url, function(err){
+		if(err) throw err
+		console.log('create comment connection established ');
+		const reviews = new Reviews({
+			name: req.body.name,
+			comment: req.body.comment,
+			rating: req.body.rating
+		})
+		reviews.save((err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+	});
+})
 
-// app.controller('MainCtrl', function($scope){
-// 	$scope.products = [
-// 		{Product: "add"}
-// 		];
-// 	$scope.editing = false;
-//     $scope.addProduct = function(product) {
-//         $scope.products.push(product);
-//         $scope.product = {};
-//     };
-    
-//     $scope.myCartItems = [];
-    
-//     $scope.addToCart = function(product)
-//     {
-//       $scope.myCartItems.push(product);
-//     }
-// });
 
  
 app.listen(3000, () => console.log('blog server running on port 3000!'))

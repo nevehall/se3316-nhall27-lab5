@@ -12,6 +12,10 @@ export class ShowProductService {
     return this.http.post('/api/post/getAllProduct',{})
     }
     
-    
+    updateProduct(id,data){
+        console.log('id is', id);
+        console.log('data is', data);
+        return this.http.put('/api/put/'+id+'/updateProduct',data)
+    }
 }
 

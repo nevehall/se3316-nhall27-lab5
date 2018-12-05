@@ -1,3 +1,50 @@
-<p>
-  manager works!
-</p>
+<!-- Bootstrap links -->
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    div{
+        font-size: 18px;
+    }
+    p {
+        font-size: 15px;
+    }
+    button{
+        border-radius: 12px;
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+    </style>
+    
+    
+</head>
+
+<div class= "container">
+<div class="list-group">
+        <ul *ngFor="let product of products">
+            <div>
+                <li> <h4 class="mb-1"><strong>{{product.name}}</strong></h4> </li>
+            </div>
+            <p class="mb-0">Price: {{product.price}}</p>
+            <input type="text" [(ngModel)]="price"><button (click)="updatePrice(price, product._id)" id={{product._id}}>Update</button> 
+            
+            <p class="mb-0">Tax %: {{product.tax}}</p>
+            <input type="text" [(ngModel)]="tax"><button (click)="updateTax(tax, product._id)" id={{product._id}}>Update</button>
+            
+            <p class="mb-0">Quantity: {{product.quantity}}</p>
+            <input type="text" [(ngModel)]="quantity"><button (click)="updateQuantity(quantity, product._id)" id={{product._id}}>Update</button>
+            
+            <p class="mb-0">Description: {{product.descript}}</p>
+            <input type="text" [(ngModel)]="descript"><button (click)="updateDescript(descript, product._id)" id={{product._id}}>Update</button>
+            
+            <!--<button (click)="addProduct(product.id)" type="button" class="btn btn-primary"><strong>Add to Cart</strong></button>-->
+            <!--<button  id(click)="addProduct(product.price, product.tax, product.quantity, product.description, product.price)"><strong>Add to Cart</strong></button>-->
+
+        </ul>
+</div>
+</div>
