@@ -92,7 +92,7 @@ app.post('/api/post/getAllCart', (req, res) => {
     });
 })
 
-//Update the products in the cart
+//Update the products quantity in the cart
 app.post('/api/post/updateProduct', (req, res) => {
 	mongoose.connect(url, function(err){
 		if(err) throw err;
@@ -112,6 +112,25 @@ app.post('/api/post/updateProduct', (req, res) => {
 		})
 	});
 })
+
+//Delete the product in the cart
+
+// app.delete('/api/delete/:id/deleteProduct', (req, res) => {
+// 	console.log('delete product is called');
+// 	mongoose.connect(url, function(err){
+// 		if(err) throw err;
+// 		Cart.findByIdAndRemove(req.body.id,
+// 			(err, doc) => {
+// 			if(err) throw err;
+// 			return res.status(200).json({
+// 				status: 'success',
+// 				data: doc
+// 			})
+// 		})
+// 	});
+// })
+
+
 
 //***********MANAGER FUNCTIONALITIES - update and delete products, DCMA***********
 //update price
@@ -214,21 +233,6 @@ app.post('/api/post/createNewProduct', (req, res) => {
 
 //*******************************************************************
 
-//Delete the product in the cart
-app.delete('/api/delete/:id/deleteProduct', (req, res) => {
-	console.log('delete product is called');
-	mongoose.connect(url, function(err){
-		if(err) throw err;
-		Cart.findByIdAndRemove(req.body.id,
-			(err, doc) => {
-			if(err) throw err;
-			return res.status(200).json({
-				status: 'success',
-				data: doc
-			})
-		})
-	});
-})
 
 //Get all user from the USER collection -- for manager
 app.post('/api/post/getAllUser', (req, res) => {
