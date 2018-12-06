@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowProductService } from '../show-product/show-product.service';
 import { Product } from '../models/product.model';
+import { DCMA } from '../models/dcma.model';
 import { Router } from '@angular/router';
 import { CommonService } from '../service/common.service';
 import { ManagerService } from '../manager.service';
@@ -14,6 +15,7 @@ import { ManagerService } from '../manager.service';
 export class ManagerComponent implements OnInit {
 
   public products : any [];
+  public dcma : any[];
   //public product : Product;
  
   constructor(private showProductService: ShowProductService, private commonService: CommonService, private managerService: ManagerService) { }
@@ -24,6 +26,8 @@ export class ManagerComponent implements OnInit {
     this.commonService.productAdded_Observable.subscribe(res => {
       this.getAllProduct();
     });
+    
+    
   }
   
   getAllProduct(){
@@ -67,6 +71,14 @@ export class ManagerComponent implements OnInit {
       console.log('descript is', result);
     });
   }
+  
+  //deleting the entire product
+  removeProduct(id){
+    this.managerService.removeProduct(id).subscribe(result =>{
+      console.log('entire product is', result);
+    })
+  }
+  
   
   
 }

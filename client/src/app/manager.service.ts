@@ -42,5 +42,12 @@ export class ManagerService {
   }
   
   
+  removeProduct(id){
+    console.log('in service, entire prod to delete is '+ id);
+    return this.http.delete('api/delete/removeProduct/'+id,{
+      //id: id
+    })
+  }
+  
   
 }

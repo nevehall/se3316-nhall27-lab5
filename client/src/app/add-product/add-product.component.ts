@@ -17,8 +17,8 @@ export class AddProductComponent implements OnInit{
   public cart : Cart;
   user;
 
-  constructor(private addProductService: AddProductService, private router: Router, private commonService: CommonService,
-  private managerService: ManagerService) {
+  constructor(private addProductService: AddProductService, private router: Router, private commonService: CommonService, private managerService: ManagerService) 
+  {
   	this.cart = new Cart();
   }
   

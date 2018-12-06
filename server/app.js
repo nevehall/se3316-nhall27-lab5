@@ -6,6 +6,7 @@ const url = 'mongodb://nhall27:webtechlab5@ds237641.mlab.com:37641/se3316_nhall2
 const User = require('./model/user');
 const Product = require('./model/product');
 const Cart = require('./model/cart');
+const DCMA = require('./model/dcma');
 
 //SANITIZATION
 function encodeHTML(e){
@@ -35,27 +36,6 @@ app.post('/api/user/login', (req, res) => {
 		})
 	});
 	
-	// mongoose.connect(url, function(err){
-	// 	if(err) throw err;
-	// 	User.find({
-	// 		email : req.body.email, 
-	// 		manager : req.body.manager
-	// 	}, function(err, user){
-	// 		if(err) throw err;
-	// 		if(user.length === 1){	
-	// 			return res.status(200).json({
-	// 				status: 'mlab user works',
-	// 				data: user
-	// 			})
-	// 		} else {
-	// 			return res.status(200).json({
-	// 				status: 'fail',
-	// 				message: 'Login Failed'
-	// 			})
-	// 		}
-			
-	// 	})
-	// });
 }) 
 
 
@@ -131,47 +111,81 @@ app.post('/api/post/updateProduct', (req, res) => {
 	});
 })
 
-//*****************MANAGER UPDATES PRODUCTS***********************
+//***********MANAGER FUNCTIONALITIES - update and delete products, DCMA***********
 //update price
 app.put('/api/put/updatePrice/:id', function(req, res) {
 	console.log('price update working' + req.body.price);
-		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
-			if(err)
-				res.send(err);
-			console.log(req.body);	
-			//console.log(err);
-		});
+	Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+		if(err)
+			res.send(err);
+		console.log(req.body);	
+		//console.log(err);
+	});
 })
 
 //update tax 
 app.put('/api/put/updateTax/:id', function(req, res) {
 	console.log('tax update working' + req.body.tax);
-		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
-			if(err)
-				res.send(err);
-			console.log(req.body);	
-		});
+	Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+		if(err)
+			res.send(err);
+		console.log(req.body);	
+	});
 })
 
 //update quantity
 app.put('/api/put/updateQuantity/:id', function(req, res) {
 	console.log('tax update working' + req.body.quantity);
-		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
-			if(err)
-				res.send(err);
-			console.log(req.body);	
-		});
+	Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+		if(err)
+			res.send(err);
+		console.log(req.body);	
+	});
 })
 
 //update description
 app.put('/api/put/updateDescript/:id', function(req, res) {
 	console.log('tax update working' + req.body.descript);
-		Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
-			if(err)
-				res.send(err);
-			console.log(req.body);	
-		});
+	Product.findByIdAndUpdate(req.params.id, req.body, function(err, product){
+		if(err)
+			res.send(err);
+		console.log(req.body);	
+	});
 })
+
+//remove product
+app.delete('/api/delete/removeProduct/:id', function(req, res){
+	console.log('id of product to delete' + req.body.id);
+	Product.findByIdAndRemove(req.params.id, function(err, next){
+		if(err) return next(err);
+			//res.send(err);
+		res.send('Deleted successfully!');
+		console.log(req.body);
+		console.log(err);
+	});
+})
+
+//Add a DCMA
+app.post('/api/post/createDCMA', (req, res) => {
+	mongoose.connect(url, function(err){
+		if(err) throw err
+		console.log('create DCMA connection established ');
+		const dcma = new DCMA({
+			manEmail: req.body.manEmail,	
+			cusEmail: req.body.cusEmail,
+			about: req.body.about,
+			comment: req.body.comment
+		})
+		dcma.save((err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+	});
+})
+
 
 //*******************************************************************
 
@@ -206,25 +220,22 @@ app.post('/api/post/getAllUser', (req, res) => {
     });
 })
 
-//Add a comment
-app.post('/api/post/createReview', (req, res) => {
-	mongoose.connect(url, function(err){
-		if(err) throw err
-		console.log('create comment connection established ');
-		const reviews = new Reviews({
-			name: req.body.name,
-			comment: req.body.comment,
-			rating: req.body.rating
-		})
-		reviews.save((err, doc) => {
+//Get all DCMAs
+app.post('/api/post/getAllDcma', (req, res) => {
+    mongoose.connect(url, function(err){
+        if(err) throw err;
+        console.log('DCMA find established successfully');
+        DCMA.find({},[],{ sort: { _id: 1 } },(err, doc) => {
 			if(err) throw err;
 			return res.status(200).json({
 				status: 'success',
 				data: doc
 			})
 		})
-	});
+    });
 })
+
+
 
 
  

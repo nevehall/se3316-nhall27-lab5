@@ -26,15 +26,17 @@
 
 
 <div class="list-group">
-        <ul *ngFor="let cart of carts">
-            <div>
-                <li> <h4 class="mb-1"><strong>{{cart.name}}</strong></h4> </li>
-            </div>
-            <p class="mb-0">Quantity: {{cart.quantity}}</p>
-            <div>
-                <button #editProduct title="Edit" (click)="editCart(cart)" aria-hidden="true">Edit</button>
-                <button (click)="deleteProduct($event)" id={{cart._id}} title="Delete" aria-hidden="true">Delete</button>
-            </div>
+    <div>*******************************************************************</div>
+        <ul *ngFor="let dcma of dcmas">
+            
+            <p class="mb-0">Manager Email: {{dcma.manEmail}}</p>
+            <p class="mb-0">Customer Email: {{dcma.cusEmail}}</p>
+            <p class="mb-0">The complaint is about: {{dcma.about}}</p>
+            <p class="mb-0">The comment or thing being complained about: {{dcma.comment}}</p>
+
         </ul>
+    <div>*******************************************************************</div>
 </div>
+
+
 

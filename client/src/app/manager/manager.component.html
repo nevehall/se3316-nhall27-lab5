@@ -25,6 +25,7 @@
 </head>
 
 <div class= "container">
+<h1>Products</h1>
 <div class="list-group">
         <ul *ngFor="let product of products">
             <div>
@@ -44,7 +45,12 @@
             
             <!--<button (click)="addProduct(product.id)" type="button" class="btn btn-primary"><strong>Add to Cart</strong></button>-->
             <!--<button  id(click)="addProduct(product.price, product.tax, product.quantity, product.description, product.price)"><strong>Add to Cart</strong></button>-->
-
+            <button (click)="removeProduct(product._id)" id = {{product._id}}>Delete Product</button>
         </ul>
 </div>
+
+<h1>DCMA Log</h1>
+<app-add-dcma></app-add-dcma>
+<app-show-dcma></app-show-dcma>
+
 </div>

@@ -28,6 +28,10 @@ import { ShowCartComponent } from './show-cart/show-cart.component';
 import { ManagerComponent } from './manager/manager.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { ShowReviewComponent } from './show-review/show-review.component';
+import { AddDcmaComponent } from './add-dcma/add-dcma.component';
+import { ShowDcmaComponent } from './show-dcma/show-dcma.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { DcmaPolicyComponent } from './dcma-policy/dcma-policy.component';
 
 
 
@@ -46,7 +50,11 @@ import { ShowReviewComponent } from './show-review/show-review.component';
     ShowCartComponent,
     ManagerComponent,
     AddReviewComponent,
-    ShowReviewComponent
+    ShowReviewComponent,
+    AddDcmaComponent,
+    ShowDcmaComponent,
+    PrivacyComponent,
+    DcmaPolicyComponent
   ],
   imports: [
     BrowserModule,

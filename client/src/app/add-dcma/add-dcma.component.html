@@ -1,0 +1,45 @@
+<!-- Bootstrap links -->
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    div{
+        font-size: 18px;
+    }
+    p {
+        font-size: 15px;
+    }
+    button{
+        border-radius: 12px;
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+    </style>
+    
+    
+</head>
+
+<div class = "container">
+    <div class="list-group">
+    
+                <label>Your Email: </label>
+                <input type="text" [(ngModel)]="dcma.manEmail"><br/>
+                
+                <label>Email of the person who filed the complaint: </label>
+                <input type="text" [(ngModel)]="dcma.cusEmail"><br/>
+                
+                <label>What was the complaint about: </label>
+                <input type="text" [(ngModel)]="dcma.about"><br/>
+                
+                <label>The comment or thing being complained about: </label>
+                <input type="text" [(ngModel)]="dcma.comment"><br/>
+                
+                <button (click)="addDCMA()" type="button" class="btn btn-primary">Submit</button>
+                
+    </div>
+</div>
