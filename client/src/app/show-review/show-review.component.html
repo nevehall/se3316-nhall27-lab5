@@ -1,3 +1,37 @@
-<p>
-  show-review works!
-</p>
+<!-- Bootstrap links -->
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    div{
+        font-size: 18px;
+    }
+    p {
+        font-size: 15px;
+    }
+    button{
+        border-radius: 12px;
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+    </style>
+    
+    
+</head>
+
+
+<div class="list-group">
+        <ul *ngFor="let reviews of reviews">
+            <div>
+                <li> <h4 class="mb-1"><strong>{{reviews.name}}</strong></h4> </li>
+            </div>
+            <p class="mb-0">Comment: {{reviews.comment}}</p>
+            <p class="mb-0">Rating (1-5 Stars): {{reviews.rating}}</p>
+
+        </ul>
+</div>

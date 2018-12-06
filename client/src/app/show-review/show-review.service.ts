@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DcmaPolicy } from '../models/dcmaPolicy.model';
+import { Reviews } from '../models/reviews.model';
 
  
 @Injectable()
-export class DcmaPolicyService {
+export class ShowReviewService {
  
     constructor(private http: HttpClient){}
     
-    getDcmaPolicy(){
-    return this.http.post('/api/post/getDcmaPolicy',{})
+    getAllReviews(){
+    return this.http.post('/api/post/getAllReviews',{})
     }
+
 }

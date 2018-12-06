@@ -32,6 +32,8 @@ import { AddDcmaComponent } from './add-dcma/add-dcma.component';
 import { ShowDcmaComponent } from './show-dcma/show-dcma.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { DcmaPolicyComponent } from './dcma-policy/dcma-policy.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { NewProductComponent } from './new-product/new-product.component';
 
 
 
@@ -54,7 +56,9 @@ import { DcmaPolicyComponent } from './dcma-policy/dcma-policy.component';
     AddDcmaComponent,
     ShowDcmaComponent,
     PrivacyComponent,
-    DcmaPolicyComponent
+    DcmaPolicyComponent,
+    ReviewsComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
 export class Reviews{
 	constructor(){
-		//this._id = '';
 		this.name = '';
 		this.comment = '';
 		this.rating = '';

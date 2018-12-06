@@ -9,7 +9,6 @@ export class AddProductService {
 	
 	addProduct(cart: Cart){
 		return this.http.post('/api/post/createProduct',{
-		    //id: product._id,
 			name : cart.name,
 			quantity : cart.quantity
 		})

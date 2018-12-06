@@ -20,7 +20,7 @@
       <li><a routerLink="/bestSellers">Best Sellers</a></li>
       <li><a routerLink="/catalogue">Catalogue</a></li>
       <li><a routerLink="/privacy">Privacy Policy</a></li>
-      <li><a routerLink="/dcma-policy">DCMA</a></li>
+      <li><a routerLink="/dcmaPolicy">DCMA</a></li>
       <a *ngFor="let user of user">
         <a *ngIf= "(authService.user | async) && (user.manager==true)&&(user.email==(authService.user | async)?.email)">
           <a routerLink="/manager">{{user.email}} : Manager Status</a>

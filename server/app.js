@@ -7,6 +7,8 @@ const User = require('./model/user');
 const Product = require('./model/product');
 const Cart = require('./model/cart');
 const DCMA = require('./model/dcma');
+const DcmaPolicy = require('./model/dcmaPolicy');
+const Reviews = require('./model/reviews');
 
 //SANITIZATION
 function encodeHTML(e){
@@ -186,6 +188,29 @@ app.post('/api/post/createDCMA', (req, res) => {
 	});
 })
 
+//Add a new product
+app.post('/api/post/createNewProduct', (req, res) => {
+	mongoose.connect(url, function(err){
+		if(err) throw err
+		console.log('create NEW product connection established ');
+		const product = new Product({
+			name: req.body.name,
+			price: req.body.price,
+			tax: req.body.tax,
+			quantity: req.body.quantity,
+			descript: req.body.descript
+		})
+		product.save((err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'new product success',
+				data: doc
+			})
+		})
+	});
+})
+
+
 
 //*******************************************************************
 
@@ -235,9 +260,103 @@ app.post('/api/post/getAllDcma', (req, res) => {
     });
 })
 
+//create dcma policy to view publicly
+app.post('/api/post/createDcmaPolicy', (req, res) => {
+	mongoose.connect(url, function(err){
+		if(err) throw err
+		console.log('create dcma policy connection established ');
+		const dcmaPolicy = new DcmaPolicy({
+			info: req.body.info
+		})
+		dcmaPolicy.save((err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+	});
+})
+
+//get the dcma policy to display publicly
+app.post('/api/post/getDcmaPolicy', (req, res) => {
+    mongoose.connect(url, function(err){
+        if(err) throw err;
+        console.log('get dcma policy successful');
+        DcmaPolicy.find({},[],(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+    });
+})
+
+// app.get('/api/get/getDmcaPolicy'), function(req, res){
+// 	console.log('in getDcmaPolicy');
+// 	console.log(res);
+// 	DcmaPolicy.find(function(err, dcma){
+// 		if(err) 
+// 			console.log(err);
+// 			//res.send(err);
+// 		res.send(dcma);
+// 	});
+// }
+
+//********************MAKE A REVIEW COMPONENT***********************
+//Add a review
+app.post('/api/post/createReview', (req, res) => {
+	mongoose.connect(url, function(err){
+		if(err) throw err
+		console.log('create review connection established ');
+		const reviews = new Reviews({
+			name: req.body.name,
+			comment: req.body.comment,
+			rating: req.body.rating
+		})
+		reviews.save((err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'success',
+				data: doc
+			})
+		})
+	});
+})
+
+//Get all the reviews
+app.post('/api/post/getAllReviews', (req, res) => {
+    mongoose.connect(url, function(err){
+        if(err) throw err;
+        console.log('connection established successfully');
+        Reviews.find({},[],{ sort: { _id: 1 } },(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'find reviews success',
+				data: doc
+			})
+		})
+    });
+})
+
+//Get all best sellers 
+app.post('/api/post/getBestSellers', (req, res) => {
+    mongoose.connect(url, function(err){
+        if(err) throw err;
+        console.log('best sellers connection established successfully');
+        Product.find({},[],{ sort: { purchased: -1 } },(err, doc) => {
+			if(err) throw err;
+			return res.status(200).json({
+				status: 'find best sellers success',
+				data: doc
+			})
+		})
+    });
+})
+
+//*******************************************************************
 
 
-
- 
 app.listen(3000, () => console.log('blog server running on port 3000!'))
 

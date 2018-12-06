@@ -1,0 +1,36 @@
+<!--Bootstrap links -->
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
+</head>
+
+<!--**************THIS IS THE ADD FOR MANAGER******************-->
+<div>
+    <label>Name: </label>
+    <input name="name" type="text" [(ngModel)]="product.name" id="nameInput" placeholder="Enter Product Name">
+</div>
+<div>
+    <label>Price: </label>
+    <textarea name="price" [(ngModel)]="product.price" id="priceInput" placeholder="Price"></textarea>
+</div>
+<div>
+    <label>Tax %: </label>
+    <textarea name="tax" [(ngModel)]="product.tax" id="taxInput" placeholder="Tax"></textarea>
+</div>
+<div>
+    <label>Quantity: </label>
+    <textarea name="quantity" [(ngModel)]="product.quantity" id="quantityInput" placeholder="Quantity"></textarea>
+</div>
+<div>
+    <label>Description: </label>
+    <textarea name="descript" [(ngModel)]="product.descript" id="descriptInput" placeholder="Description"></textarea>
+</div>
+
+<button (click)="addNewProduct()" type="button" class="btn btn-primary">Add New Product</button>

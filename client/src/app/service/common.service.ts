@@ -3,6 +3,7 @@ import { Subject }    from 'rxjs/Subject';
 import { Product } from '../models/product.model';
 import { Cart } from '../models/cart.model';
 import { DCMA } from '../models/dcma.model';
+import { Reviews } from '../models/reviews.model';
 
 
 @Injectable()
@@ -18,6 +19,15 @@ export class CommonService {
 	public dcmaAdded_Observable = new Subject();
 	public dcma_to_be_added;
 	
+	
+	//reviews stuff
+	public reviewsAdded_Observable = new Subject();
+	public reviews_to_be_added;
+	
+	//manager adding products
+	public newProductAdded_Observable = new Subject();
+	public newProduct_to_be_added;
+	
 	//define an observable that keeps track of when the edit button is clicked
 	public productEdit_Observable = new Subject();
 	
@@ -31,8 +41,10 @@ export class CommonService {
 	constructor(){
 		this.product_to_be_edited = new Cart();
 		this.product_to_be_edited2 = new Product();
-		this.product_to_be_added = new Cart(); //or Product()????
+		this.product_to_be_added = new Cart(); 
 		this.dcma_to_be_added = new DCMA();
+		this.reviews_to_be_added = new Reviews();
+		this.newProduct_to_be_added = new Product();
 		
 	}
 
@@ -78,6 +90,28 @@ export class CommonService {
 	setDCMAToAdd(dcma: DCMA){
 		this.dcma_to_be_added= dcma;
 		this.notifyDCMAAddition;
+	}
+	
+	//reviews trigger
+	notifyReviewAddition(){
+		this.reviewsAdded_Observable.next();
+	}
+	
+	//set reviews
+	setReviewToAdd(reviews: Reviews){
+		this.reviews_to_be_added= reviews;
+		this.notifyReviewAddition;
+	}
+	
+	//new product trigger
+	notifyNewProductAddition(){
+		this.newProductAdded_Observable.next();
+	}
+	
+	//set new product
+	setNewProductToAdd(product: Product){
+		this.newProduct_to_be_added= product;
+		this.notifyNewProductAddition;
 	}
 	
 }
